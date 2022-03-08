@@ -29,7 +29,7 @@ jobs:
         if: always()
         continue-on-error: true
         run: |
-          newman run collections/Reserva.postman_collection.json --iteration-data dataset/data.json -r htmlextra --reporter-htmlextra-export testResults/index.html
+          newman run collections/Reserva.postman_collection.json -r htmlextra --reporter-htmlextra-export testResults/index.html
 
       
      
