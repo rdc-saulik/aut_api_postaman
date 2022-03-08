@@ -1,0 +1,116 @@
+{
+	"info": {
+		"_postman_id": "a55edc7b-22fd-4c68-8536-7d4f6ba9d1c6",
+		"name": "Reserva",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1 - Disponibilidade",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Check if Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"console.log(response.locations[0]);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Test data type of the response\", () => {\r",
+							"  pm.expect(response).to.be.an(\"object\");\r",
+							"  pm.expect(response.locations).to.be.an(\"array\");\r",
+							"  pm.expect(response.locations[0].id).to.be.a(\"number\");\r",
+							"  pm.expect(response.locations[0].id).not.eq(null);\r",
+							"  pm.expect(response.locations[0].id).to.be.above(0);\r",
+							"  });\r",
+							"\r",
+							"pm.test(\"Date is present in correct format\", function () {\r",
+							"    pm.expect(response.dataIda).to.match(/(\\d{4})[-.\\/](\\d{2})[-.\\/](\\d{2})/);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Date is present in correct format\", function () {\r",
+							"    pm.expect(response.dataIda).to.match(/(\\d{4})[-.\\/](\\d{2})[-.\\/](\\d{2})/);\r",
+							"    pm.expect(response.dataVolta).to.match(/(\\d{4})[-.\\/](\\d{2})[-.\\/](\\d{2})/);\r",
+							"    \r",
+							"  });\r",
+							"\r",
+							"const schema = {\r",
+							"\"type\" : \"object\", \r",
+							"\"properties\" : {\r",
+							"\"codigoIata\" : { \"type\" : \"string\" },\r",
+							"\"descrição\"  : { \"type\" : \"string\" },\r",
+							"\"cidade\"     : { \"type\" : \"string\" },\r",
+							"\r",
+							"}};\r",
+							"\r",
+							"pm.test('Validando o corpo de Dados', function () {\r",
+							"    pm.expect(tv4.validate(response, schema)).to.be.true;\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://hmgdelphiaereo.rdcviagens.com.br/api/Motor/Disponibilidade?QuantidadeAdultos=1&QuantidadeBebes=0&FiltrosPagina=1&FiltrosQtdPagina=1&Origem=VCP&Destino=GYN&DataIda=2022-06-21&DataVolta=2022-06-23",
+					"protocol": "http",
+					"host": [
+						"hmgdelphiaereo",
+						"rdcviagens",
+						"com",
+						"br"
+					],
+					"path": [
+						"api",
+						"Motor",
+						"Disponibilidade"
+					],
+					"query": [
+						{
+							"key": "QuantidadeAdultos",
+							"value": "1"
+						},
+						{
+							"key": "QuantidadeBebes",
+							"value": "0"
+						},
+						{
+							"key": "FiltrosPagina",
+							"value": "1"
+						},
+						{
+							"key": "FiltrosQtdPagina",
+							"value": "1"
+						},
+						{
+							"key": "Origem",
+							"value": "VCP"
+						},
+						{
+							"key": "Destino",
+							"value": "GYN"
+						},
+						{
+							"key": "DataIda",
+							"value": "2022-06-21"
+						},
+						{
+							"key": "DataVolta",
+							"value": "2022-06-23"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
