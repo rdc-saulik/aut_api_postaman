@@ -1,0 +1,10 @@
+
+
+
+**************************sem variaveis de ambiente ********************************************8
+newman run Reserva.postman_collection.json -r htmlextra --reporter-htmlextra-browserTitle "RDC QUALITY" -r htmlextra --reporter-htmlextra-title "RDC Test Api Automation" --reporter-htmlextra-export testResults/RDC Test_Api_Automation.html
+
+**************************com variaveis de ambiente *******************************************************
+newman run Reserva.postman_collection.json -e development.postman_environment.json -r htmlextra --reporter-htmlextra-browserTitle "RDC QUALITY" -r htmlextra --reporter-htmlextra-title "RDC Test Api Automation" --reporter-htmlextra-export testResults/Test_Api_Automation.html
+
+ 
