@@ -30,6 +30,7 @@ jobs:
         continue-on-error: true
         run: |
           mkdir -p testResults
-          newman run collections/Reserva.postman_collection.json -r htmlextra --reporter-htmlextra-export testResults/index.html
+          newman run collections/Reserva.postman_collection.json -r htmlextra --reporter-htmlextra-browserTitle "RDC QUALITY" -r htmlextra --reporter-htmlextra-title "RDC Test Api Automation" --reporter-htmlextra-export testResults/Api_Automation.html
+
       
      
