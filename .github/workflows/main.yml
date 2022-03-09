@@ -8,6 +8,7 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+  workflow_dispatch:
   schedule:
     # 30 minute (0 - 59), 23 hour (0 - 23), * (Todos) day of the month (1 - 31), * (Todos) month (1 - 12)
     - cron:  '30 23 * * *'
@@ -29,8 +30,6 @@ jobs:
         if: always()
         continue-on-error: true
         run: |
-          newman run collections/Reserva.postman_collection.json -r htmlextra --reporter-htmlextra-browserTitle "RDC QUALITY" -r htmlextra --reporter-htmlextra-title "RDC Test Api Automation" --reporter-htmlextra-export testResults/RDC Test_Api_Automation.html
-
-
+          newman run collections/Reserva.postman_collection.json  -r htmlextra --reporter-htmlextra-title "RDC Api Automation" --reporter-htmlextra-export testResults/Test_Api_Automation.html
       
      
